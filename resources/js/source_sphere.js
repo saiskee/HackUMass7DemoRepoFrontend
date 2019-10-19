@@ -12,6 +12,7 @@ const camOffset = 2.1;
 init();
 animate();
 
+
 /*
  * Draw sources and sphere
  */

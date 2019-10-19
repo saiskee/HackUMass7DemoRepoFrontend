@@ -21,22 +21,8 @@ let potentialServer
    });
 
    function handleConnection(conn) {
-    const express = require('express')
-    const cors = require('cors')
-    const app = express()
-    const WebSocket = require('ws')
-    const wss = new WebSocket.Server({ port: 8080 })
-    wss.on('connection', ws => {
-      ws.send(recent_data)
-    })
-    app.use(cors())
-    app.use('/static', express.static('public'))
-    const port = 3111
-    recent_data = ''
 
-    app.get('/', (req, res) => res.send(recent_data))
-
-    app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+    
      var remoteAddress = conn.remoteAddress + ':' + conn.remotePort;
      console.log('new client connection from %s', remoteAddress);
 
@@ -74,7 +60,7 @@ let potentialServer
            }
 
            try {
-            recent_data = str
+             console.log(str);
              odasStudio.mainWindow.webContents.send('newTracking',str);
              if(typeof odasStudio.odas.odas_process == 'undefined') {
                odasStudio.mainWindow.webContents.send('remote-online');

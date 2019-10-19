@@ -22,15 +22,7 @@ let potentialServer
 
    function handleConnection(conn) {
     const express = require('express')
-    const cors = require('cors')
     const app = express()
-    const WebSocket = require('ws')
-    const wss = new WebSocket.Server({ port: 8080 })
-    wss.on('connection', ws => {
-      ws.send(recent_data)
-    })
-    app.use(cors())
-    app.use('/static', express.static('public'))
     const port = 3111
     recent_data = ''
 
